@@ -1,0 +1,97 @@
+[
+  {
+    "Iteration": 0,
+    "Steps": [
+      "git clone", 
+      "Find package.json, npm install", 
+      "npm install react-router and react-router-dom", 
+      "import BrowserRouter to index.js", 
+      "npm install bootstrap", 
+      "import bootstrap to index.js"
+    ],
+    "Syntax": [
+      "import { BrowserRouter } from 'react-router-dom';", 
+      "import 'bootstrap/dist/css/bootstrap.css';"
+    ]
+  },
+  {
+    "Iteration": 1,
+    "Steps": [
+      "Setup the components you will use", 
+      "Create a NavBar, CountryList, and CountryDetails component", 
+      "NavBar: add a Link to home (/), remember to import Link ", 
+      "App: add the NavBar component so that it always shows, remember to import"
+    ],
+    "Syntax": [
+      "import { Link } from 'react-router-dom';", 
+      "import NavBar from './components/NavBar';"
+    ]
+  },
+  {
+    "Iteration": 2,
+    "Steps": [
+      "Lets do some work in App.js, we will setup up the route", 
+      "App: import CountriesList, CountryDetails, countries.json, Switch, and Route", 
+      "App: copy the html code provided in the README and paste it under the NavBar component, this just helps us organize the data into two columns, you can read more about class='col-5, col-7, list-group, row, container' in bootstrap docs", 
+      "App: call CountriesList inside of the class='list-group' (we will wrap list-group inside col-5)", 
+      "App: call the Route component, leave it empty for now", 
+      "App: wrap the Route component with the Switch component", 
+      "App: add the path to route and the component that it will render (i.e. CountryDetails)", 
+      "CountriesList: add some text inside CoutriesList to make sure it renders correctly"
+    ],
+    "Syntax": [
+      "import { Switch, Route } from 'react-router-dom';", 
+      "import CountriesList from './components/CountriesList'", 
+      "import CountryDetails from './components/CountryDetails'", 
+      "<div className='col-5'><div className='list-group'><CountriesList/></div></div>", 
+      "<Switch><Route/></Switch>", 
+      "<Route exact path='/countries/:cca3' render={props => (<CountryDetails {...props}/>"
+    ]
+  },
+  {
+    "Iteration": 3,
+    "Steps": [
+      "Now we will display all the countries as links on the left column", 
+      "App: pass the countries data to CountriesList as a prop", 
+      "CountriesList: use map to display each country name inside of a link"
+    ],
+    "Syntax": [
+      "<CountriesList countries={countries} />", 
+      "displayAllCountries = () => {return this.props.countries.map(eachCountry => {return (<Link><Link/>)}) }", 
+      "<Link key={eachCountry.cca3} className='list-group-item list-group-item-action' to={'/countries/' + eachCountry.cca3}> {eachCountry.name.common}</Link>"
+    ]
+  },
+  {
+    "Iteration": 4,
+    "Steps": [
+      "Now we will display the details of each country", 
+      "App: pass the countries data to CountryDetails", 
+      "CountryDetails: make three variables (cca3, countries, and country) between render and return", 
+      "CountryDetails: cca3 will be each the params", 
+      "CountryDetails: countries will be equal to the countries props", 
+      "CountryDetails: country will be equal to the country that is found using countries.find()", 
+      "CountryDetails: lets organize the details of the country inside a table", 
+      "CountryDetails: <thead/> will be empty", 
+      "CountryDetails: <tbody/> will have 3 rows (Capital, Area, and Borders", 
+      "CountryDetails: add a row <tr> and inside put the capital", 
+      "CountryDetails: add a row <tr> and inside put the area"
+    ],
+    "Syntax": [
+      "<CountryDetails {...props} countries={countries} />", 
+      "let cca3 = this.props.match.params.cca3", 
+      "let countries = this.props.countries;", 
+      "let country = countries.find(country => country.cca3 === cca3)"
+    ]
+  },
+  {
+    "Iteration": 5,
+    "Steps": [
+      "Now we will display the border", 
+      "CountryDetails: map the country borders and display each boder as a Link just like we did in CountriesList", 
+      "CountryDetails: what happens if there is no border? how can we fix this? conditional..."
+    ],
+    "Syntax": [
+      "Figure it out, lol, jk. Use what we have already learned as a reference to display the borders"
+    ]
+  }
+]
